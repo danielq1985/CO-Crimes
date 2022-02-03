@@ -199,8 +199,7 @@ LEFT JOIN AgeNum
 
 WHERE CountyName.pub_agency_name IS NOT NULL --drop NULLS from agency
 AND 
-CountyName.county_name IS NOT NULL
-ORDER BY incident_date ASC; --drop NULLS from county
+CountyName.county_name IS NOT NULL; --drop NULLS from county
 
 --Result of 1,845,650 rows with no NULLS
 
