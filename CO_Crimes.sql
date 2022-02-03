@@ -136,6 +136,8 @@ WHERE county_name = county_name
 GROUP BY county_name 
 ORDER BY 2 DESC; --mean age by county ranges from 42 - 27
 
+--It will be important to use the averages by county and not the overall averages
+
 ---------------------------------------------------------------------------------
 --Window Functions 
 --for running total of offenses: day, mtd, ytd
