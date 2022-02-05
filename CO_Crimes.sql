@@ -11,7 +11,7 @@ Data Cleaning
 -NULL Values
 -Clean numeric columns with NULL Values
 Window Functions 
---for running total of offenses: day, mtd, ytd
+-for running total of offenses: day, mtd, ytd
 Date Columns
 -Day of the week
 -Month of the year
