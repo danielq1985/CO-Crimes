@@ -6,18 +6,20 @@ FROM Crimes_in_Colorado; --1,851,996
 
 /*
 Overview:
-
 Data Cleaning
 -Verify county names are valid locations
 -NULL Values
 -Clean numeric columns with NULL Values
 Window Functions 
 --for running total of offenses: day, mtd, ytd
+Date Columns
+-Day of the week
+-Month of the year
 Create Main View
 Questions
 */
 
--------------------------------------------------------------------------------
+------------------------------------------------------------------
 --Verify county names are valid locations
 
 SELECT TOP (20) county_name
@@ -36,17 +38,11 @@ WHERE county_name LIKE '%;%';
 --Looking at google maps Jefferson and Adams county are touching and Westminster is right in between them.
 --To plot the data we can only use one county, so the first county listed will be used only.
 
---Test logic
-SELECT LEFT(county_name, CHARINDEX(';', county_name) - 1) 
-FROM Crimes_in_Colorado
-WHERE county_name LIKE '%;%';
-
---Will use
 SELECT
 	CASE WHEN county_name LIKE '%;%' THEN LEFT(county_name, CHARINDEX(';', county_name) - 1) ELSE county_name END
 FROM Crimes_in_Colorado;
 
---------------------------------------------------------------------------------
+-------------------------------------------------------------------
 --NULL Values
 
 --Any NULL values, how many per column?
@@ -101,7 +97,7 @@ SELECT *
 FROM Crimes_in_Colorado
 WHERE age_num IS NULL; --802925 NULLS, with the other columns still being useful
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------
 --Clean numeric columns with NULL Values
 
 --NOTE: to deal with numeric column NULLS we will first look into averages by county to see 
@@ -136,9 +132,9 @@ WHERE county_name = county_name
 GROUP BY county_name 
 ORDER BY 2 DESC; --mean age by county ranges from 42 - 27
 
---It will be important to use the averages by county and not the overall averages
+--It will be important to use the averages by county and not overall averages
 
----------------------------------------------------------------------------------
+---------------------------------------------------------------
 --Window Functions 
 --for running total of offenses: day, mtd, ytd
 
@@ -147,10 +143,20 @@ SELECT *,
 		COUNT(county_name) OVER (PARTITION BY county_name, MONTH(incident_date), YEAR(incident_date) ORDER BY incident_date) as offs_mtd,
 		COUNT(county_name) OVER (PARTITION BY county_name, YEAR(incident_date) ORDER BY incident_date) as offs_ytd
 
-FROM [colorado-crimes].[dbo].[ColoradoCrimesView]
-ORDER BY incident_date ASC
+FROM Crimes_in_Colorado
+ORDER BY incident_date ASC;
 
----------------------------------------------------------------------------------
+------------------------------------------------------------------------
+--Date Columns
+--Day of the week
+--Month of the year
+
+SELECT TOP 100 *, 
+		   DATENAME(WEEKDAY, incident_date) day, 
+		   DATENAME(MONTH, incident_date) month
+FROM Crimes_in_Colorado;
+
+-------------------------------------------------------------------------
 --Create Main View
 
 CREATE VIEW ColoradoCrimesView AS
@@ -186,9 +192,9 @@ SELECT CountyName.county_name_update AS county_name,
 	   CASE WHEN CountyName.age_num IS NULL
 		   THEN AgeNum.age_mean_by_county
 		   ELSE CountyName.age_num END AS age_num,
-	   COUNT(county_name) OVER (PARTITION BY county_name, incident_date ORDER BY incident_date) as offs_day,
-	   COUNT(county_name) OVER (PARTITION BY county_name, MONTH(incident_date), YEAR(incident_date) ORDER BY incident_date) as offs_mtd,
-	   COUNT(county_name) OVER (PARTITION BY county_name, YEAR(incident_date) ORDER BY incident_date) as offs_ytd
+	   COUNT(CountyName.county_name) OVER (PARTITION BY CountyName.county_name, CountyName.incident_date ORDER BY CountyName.incident_date) as offs_day,
+	   COUNT(CountyName.county_name) OVER (PARTITION BY CountyName.county_name, MONTH(CountyName.incident_date), YEAR(CountyName.incident_date) ORDER BY CountyName.incident_date) as offs_mtd,
+	   COUNT(CountyName.county_name) OVER (PARTITION BY CountyName.county_name, YEAR(CountyName.incident_date) ORDER BY CountyName.incident_date) as offs_ytd
 FROM CountyName
 
 LEFT JOIN IncidentHour
@@ -203,7 +209,7 @@ CountyName.county_name IS NOT NULL; --drop NULLS from county
 
 --Result of 1,845,650 rows with no NULLS
 
-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------
 --Questions
 
 -- What are the diff agencies? # of offences per agency
