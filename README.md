@@ -1,6 +1,6 @@
 # Crimes In Colorado
 
-In this project we use a dataset provided by data.colorado.gov for Colorado crimes from 2016-2019 to explore crimes at the county level. The provided data is cleaned using SQL Server and visualized using Tableau.
+In this project we use a dataset provided by data.colorado.gov for Offenses in Colorado for 2016 through 2019 at the county level. The provided data is cleaned using SQL Server and visualized using Tableau. 
 
 ## Overview
 - SQL Data Cleaning:
@@ -12,7 +12,7 @@ In this project we use a dataset provided by data.colorado.gov for Colorado crim
   - Create main view that will be used in Tableau
 - SQL Answer Various Questions:
   - For the county with the most crimes, which month has the most offenses? 
-  - What is the most common hour of the day and day of the week?
+    - What is the most common hour of the day and day of the week?
   - Which offense category has the highest offenses and where?
 - Create Tableau Dashboard
 
