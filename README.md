@@ -22,7 +22,7 @@ Example: El Paso County had 240 shoplifting offenses for June in 2019, the most 
 
 ## Tableau Dashboard
 
-https://public.tableau.com/app/profile/daniel.martinez8870/viz/CrimesInColorado/Dashboard1
+https://public.tableau.com/shared/GF7P5DTSW?:display_count=n&:origin=viz_share_link
 
 ## Resources
 
