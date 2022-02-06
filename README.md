@@ -21,9 +21,9 @@ The end product is a Tableau dashboard that can drill down the data and give the
 
 For example, El Paso County Shoplifters for June in 2019:
 - 240 total offenses
-- The most common age was 30 years old, youngest being 16 and the oldest 59
+- The most common age was 30 years old, the youngest being 16 and the oldest 59
 - The most common time to shoplift was 2:30 PM
-- The most common day to shoplift was Sunday with a total of 43
+- The most common day to shoplift was Sunday with a total of 43 offenses
 
 ## Tableau Dashboard
 
