@@ -19,7 +19,11 @@ In this project, we use a dataset provided by data.colorado.gov for Offenses in 
 ## Use cases
 The end product is a Tableau dashboard that can drill down the data and give the user detailed information. 
 
-Example: El Paso County had 240 shoplifting offenses for June in 2019, with the most common hour of offense at 2:00 PM with a total of 78 offenses, and the day with the most offenses was Saturday with a total of 42.
+For example, El Paso County Shoplifters for June in 2019:
+- 240 total offenses
+- The most common age was 30 years old, youngest being 16 and the oldest 59
+- The most common time to shoplift was 2:30 PM
+- The most common day to shoplift was Sunday with a total of 43
 
 ## Tableau Dashboard
 
