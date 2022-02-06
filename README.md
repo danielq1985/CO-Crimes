@@ -1,6 +1,6 @@
 # Crimes In Colorado
 
-In this project we use a dataset provided by data.colorado.gov for Offenses in Colorado for 2016 through 2019 at the county level. The provided data is cleaned using SQL Server and visualized using Tableau. 
+In this project, we use a dataset provided by data.colorado.gov for Offenses in Colorado for 2016 through 2019 at the county level. The provided data is cleaned using SQL Server and visualized using Tableau. 
 
 ## Overview
 - SQL Data Cleaning:
@@ -12,13 +12,13 @@ In this project we use a dataset provided by data.colorado.gov for Offenses in C
   - Create main view that will be used in Tableau
 - SQL Answer Various Questions:
   - For the county with the most crimes, which month has the most offenses? 
-    - What is the most common hour of the day and day of the week?
+  - What is the most common hour of the day and day of the week?
   - Which offense category has the highest offenses and where?
 - Create Tableau Dashboard
 
 ## Use cases
-The end product is a Tableau dashboard that is able to drill down the data and answer detailed questions. 
-Example:
+The end product is a Tableau dashboard that can drill down the data and give the user detailed information. 
+Example: El Paso County had 240 shoplifting offenses for June in 2019, the most common hour of offense was 2:00 PM, and the day with the most offenses was Saturday with a total of 42.
 
 ## Tableau Dashboard
 
